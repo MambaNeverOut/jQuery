@@ -31,8 +31,9 @@ window.$ = window.jQuery = function(selectorOrArrayOrTemplate) {
 };
 
 jQuery.prototype = {
-  constructor: jQuery,
+  constructor: jQuery, // constructor补上
   jquery: true,
+  // 这个对象中访问不到elements了，通过this来进行操作，api作为桥梁
   get(index) {
     return this.elements[index];
   },

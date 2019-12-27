@@ -1,7 +1,6 @@
 // const api = jQuery('.test')
 // api.addClass('black')
 
-
 // const api2 = api.find('.child').addClass('red')
 // api.addClass('green')
 
@@ -13,40 +12,40 @@
 // const x = jQuery('.test')
 // x.parent().print()
 
-
-
-window.jQuery = function (selector) {
-  let elements
-  if (typeof selector === 'string') {
-    elements = document.querySelectorAll(selector)
+window.jQuery = function(selector) {
+  let elements;
+  if (typeof selector === "string") {
+    elements = document.querySelectorAll(selector);
   } else if (selector instanceof Array) {
-    elements = selector
+    elements = selector;
   }
 
   return {
     addClass(className) {
       for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.add(className)
+        elements[i].classList.add(className);
       }
-      return this
+      return this;
     },
     find(selector) {
-      let array = []
+      let array = [];
       for (let i = 0; i < elements.length; i++) {
-        const elements2 = Array.from(elements[i].querySelectorAll(selector))
-        array = array.concat(elements2)
+        const elements2 = Array.from(elements[i].querySelectorAll(selector));
+        array = array.concat(elements2);
       }
-      return jQuery(array)
+      return jQuery(array); // 把array传入jQuery变成jQuery对象
     },
     each(fn) {
       for (let i = 0; i < elements.length; i++) {
-        fn.call(null, elements[i], i)
+        fn.call(null, elements[i], i);
       }
-      return this
+      return this;
     }
-  }
-}
+  };
+};
 
-window.$ = window.jQuery
+window.$ = window.jQuery;
 
-$('#test').find('.child').addClass('red') // 请确保这句话成功执行
+$("#test")
+  .find(".child")
+  .addClass("red"); // 请确保这句话成功执行
